@@ -1,0 +1,4 @@
+{"level":"ERROR","time":"2025-04-26T17:27:19.609+0700","msg":"failed to create product. err: Error 1054 (42S22): Unknown column 'quantity' in 'field list'"}
+{"level":"ERROR","time":"2025-04-26T17:28:04.868+0700","msg":"failed to create product. err: Error 1054 (42S22): Unknown column 'quantity' in 'field list'"}
+{"level":"ERROR","time":"2025-04-26T17:28:34.096+0700","msg":"failed to create product. err: Error 1054 (42S22): Unknown column 'quantity' in 'field list'"}
+{"level":"ERROR","time":"2025-04-26T17:30:18.001+0700","msg":"failed to create product. err: Error 1054 (42S22): Unknown column 'category_id' in 'field list'"}

@@ -1,0 +1,37 @@
+version: '3.8'
+services:
+  pms:
+    container_name: tu-nguyen-pms
+    image: tu-nguyen-pms-img:v1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/logs
+    depends_on:
+      - migrate
+  mysql:
+    container_name: mysql8
+    image: mysql:8.0
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pmsdb
+      MYSQL_USER: pmsuser
+      MYSQL_PASSWORD: 123456
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-p123456"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+  migrate:
+    image: migrate/migrate:v4.16.2
+    command: -path=/migrations -database "mysql://pmsuser:123456@tcp(mysql:3306)/pmsdb" up
+    volumes:
+      - ./migrations:/migrations
+    depends_on:
+      mysql:
+        condition: service_healthy

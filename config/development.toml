@@ -1,0 +1,15 @@
+app_name = "product_manager_system"
+version = "v1.0.0"
+env = "development"
+log_level = "debug"
+log_folder="./logs/%s.log"
+server_port=":8000"
+jwt_secret_key="4be365c5-1000-454d-8fa4-2ee0eb18c378" # mock uuid as encrypt :D
+
+[rds]
+dsn = "pmsuser:123456@tcp(host.docker.internal:3306)/pmsdb?charset=utf8mb4&parseTime=True&loc=Local" # encrypt :D
+query_log= true
+max_idle = 10
+max_conn = 10
+max_lifetime = "30m"
+
